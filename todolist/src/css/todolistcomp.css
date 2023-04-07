@@ -205,6 +205,14 @@ li {}
     font-weight: 500;
 }
 
+.checked {
+    text-decoration: line-through;
+    color: rgb(117, 117, 117);
+    width: 280px;
+    text-align: left;
+    font-weight: 500;
+}
+
 .date {
     width: 80px;
     font-size: 0.8rem;

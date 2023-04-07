@@ -50,7 +50,8 @@ const ToDoListComp = (props) => {
     
     const todoTextChange = (e) => {setTodoText(e.target.value)};
 
-    const addTodo = () => {
+    const addTodo = (e) => {
+        e.preventDefault();
         const newTodoLists = todoLists.concat(
             {
                 id: globalId++,
@@ -112,25 +113,6 @@ const ToDoListComp = (props) => {
         }
     }
 
-    /*
-    const showAll = () => {
-        let allList = Array.from(todoLists);
-        return (
-            allList.filter(
-                (todolist) => todolist.id >= 0
-            )
-        );
-    }
-
-    const showToday = () => {
-        let todayList = Array.from(todoLists);
-        return (
-            todayList.filter(
-                (todolist)=> todolist.date === today 
-            )
-        );
-    }
-    */
 
 
     return (
@@ -220,7 +202,14 @@ const ToDoListComp = (props) => {
                                             className="checkbox"
                                         />
                                         <span className="date">{todolist.date}</span>
-                                        <span className="content">{todolist.content}</span>
+                                        <span 
+                                            className= {
+                                                todolist.checked ? "checked" : ""
+                                                + " content"
+                                            }
+                                        >
+                                            {todolist.content}
+                                        </span>
                                         <button
                                             onClick={ () => {deleteTodo(todolist.id)} }
                                             className="deletebtn"
@@ -232,9 +221,10 @@ const ToDoListComp = (props) => {
                             )
                         }
                     </ul>
-                    <div 
+                    <form 
                         className="addtodo-wrap"
-                    >
+                        onSubmit={addTodo}
+                        >
                         <input 
                             type="text"
                             onChange={todoTextChange}
@@ -243,13 +233,12 @@ const ToDoListComp = (props) => {
                             className="addtodo"
                             required
                         />
-                        <button
-                            onClick={addTodo}
+                        <input 
+                            type="submit" 
+                            value="+" 
                             className="addtodo_btn"
-                        >
-                            +
-                        </button>
-                    </div>
+                        />
+                    </form>
                 </div>
             </div>
         </div>

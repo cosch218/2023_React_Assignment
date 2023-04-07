@@ -1,0 +1,13 @@
+ul {
+    list-style: none;
+}
+
+.checked {
+    color: grey;
+    text-decoration: line-through;
+}
+
+.on {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
